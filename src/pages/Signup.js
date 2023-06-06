@@ -3,8 +3,7 @@ import './styleSheets/Signup.css'
 import Swal from 'sweetalert2'
 import { Link, useNavigate } from 'react-router-dom'
 import 'animate.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from './store/slice';
+
 
 export default function Signup() {
   const [fName, setFname] = useState('')
@@ -17,8 +16,7 @@ export default function Signup() {
   const [PS, setPS] = useState('')
   
  const navigate = useNavigate()
- const dispatch = useDispatch()
- const users = useSelector((state) => state.user)
+
   function validFname(fName){
     const regex = /^[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/;
     if(regex.test(fName)){
@@ -70,19 +68,19 @@ function handlePassword(e){
   setPS(() => validPassword(e.target.value))
 } 
 
-
-const data =[{
+const userDetails = JSON.parse(localStorage.getItem('userData')) || []
+const data ={
   fName, lName, email, password,
   active: {
     isActive: false
   }
-}]
+}
 
-
+const newData = [...userDetails, data]
 function handleSubmit(e){
   e.preventDefault()
   
-  const existUser = users.user[0].find((user) => user.email === email)
+  const existUser = userDetails.find((user) => user.email === email)
 
   if(existUser){
     Swal.fire({
@@ -105,7 +103,7 @@ function handleSubmit(e){
       timer: 3000
     })
     if(done){
-     dispatch(login(data))
+    localStorage.setItem('userData', JSON.stringify(newData))
     navigate('/login')
     setFname('')
     setLname('')
