@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.mainSignup_div{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../../public/assests/img1.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inputs form{
+    border: 3px solid ;
+    border-radius: 4rem 0 4rem 0;
+    width: 25vw;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    
+}
+.inputs input{
+  margin: 1rem;
+  height: 7vh;
+  border-radius: 10px;
+  padding: 0 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.inputs button{
+    height: 7vh;
+    margin: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: cadetblue;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.inputs p {
+    color: red;
+    margin-top: -1rem;
+    margin-left: 1rem;
+}
+.inputs span{
+    padding: 0 1rem;
+}
