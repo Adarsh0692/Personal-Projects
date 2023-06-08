@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import AddCart from './pages/AddCart';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import  '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 function App() {
   return (
    <BrowserRouter>

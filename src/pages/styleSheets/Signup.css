@@ -51,3 +51,9 @@
 .inputs span{
     padding: 0 1rem;
 }
+.backArrow{
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    
+}

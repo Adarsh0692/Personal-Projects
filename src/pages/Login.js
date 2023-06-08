@@ -3,12 +3,16 @@ import  './styleSheets/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import 'animate.css';
+import BackArrow from '../components/BackArrow';
+import { useDispatch } from 'react-redux';
+import { login } from '../store/slice';
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('userData')) || []
   function handleLogin(e){
     e.preventDefault()
@@ -21,6 +25,7 @@ export default function Login() {
       if(confirmation){
         existUser.active.isActive=true
         localStorage.setItem('userData', JSON.stringify(user))
+        dispatch(login(existUser))
         navigate('/')
       }
     }else{
@@ -38,6 +43,9 @@ export default function Login() {
   }
   return (
     <div className='wrapper'>
+      <div className='backArrow'>
+      <BackArrow/>
+      </div>
       
       <div className='login'>
         <form onSubmit={handleLogin}>

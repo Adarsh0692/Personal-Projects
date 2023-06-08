@@ -3,6 +3,7 @@ import './styleSheets/Signup.css'
 import Swal from 'sweetalert2'
 import { Link, useNavigate } from 'react-router-dom'
 import 'animate.css';
+import BackArrow from '../components/BackArrow';
 
 
 export default function Signup() {
@@ -72,7 +73,8 @@ const userDetails = JSON.parse(localStorage.getItem('userData')) || []
 const data ={
   fName, lName, email, password,
   active: {
-    isActive: false
+    isActive: false,
+    cart: []
   }
 }
 
@@ -114,6 +116,10 @@ function handleSubmit(e){
 }
   return (
     <div className='mainSignup_div'>
+      <div className='backArrow'>
+      <BackArrow/>
+      </div>
+      
       <div className='inputs'>
         <form onSubmit={handleSubmit}>
        <input type="text" value={fName} onChange={handlefName} placeholder='Enter first name '  required/> {FN && <p>{FN}</p>}
