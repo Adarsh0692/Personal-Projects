@@ -74,7 +74,8 @@ const data ={
   fName, lName, email, password,
   active: {
     isActive: false,
-    cart: []
+    cart: [],
+    
   }
 }
 

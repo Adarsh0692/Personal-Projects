@@ -16,7 +16,7 @@ import { logout } from '../store/slice';
 export default function Header() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const cart = useSelector(state => state.users.cart)
+  const cart = useSelector(state => state.users.user)
   const user = JSON.parse(localStorage.getItem('userData')) || []
   const isLogin = user.find((user) => user.active.isActive === true)
 
@@ -50,9 +50,10 @@ export default function Header() {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <FastfoodIcon onClick={()=> navigate("/")} sx={{color: 'goldenrod', fontSize: '2rem',cursor:'pointer'}}/>
+            
           </Typography>
           <Button sx={{textTransform: 'capitalize',fontSize: '1.3rem', mr: '1rem'}} color="inherit" onClick={() =>handleLogout(btnName)}>{btnName}</Button>
-          <Badge badgeContent={cart.length} color="error">
+          <Badge badgeContent={cart.active?.cart.length} color="error">
                 <ShoppingCartIcon onClick={() => navigate('/cart')} sx={{fontSize: '2rem', cursor: 'pointer'}} />
               </Badge>
         </Toolbar>
