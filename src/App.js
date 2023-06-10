@@ -4,6 +4,7 @@ import AddCart from './pages/AddCart';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import  '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import NoCartItem from "./pages/NoCartItem";
 function App() {
   return (
    <BrowserRouter>
@@ -12,6 +13,7 @@ function App() {
     <Route path="/cart" element={<AddCart/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/signup" element={<Signup/>}/>
+    <Route path="/noCartItem" element={<NoCartItem/>}/>
    </Routes>
    </BrowserRouter>
   );

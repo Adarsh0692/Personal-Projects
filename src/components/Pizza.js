@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useDispatch } from 'react-redux';
 import { addToCart } from "../store/slice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 export default function Pizza({ pizza }) {
@@ -21,6 +22,7 @@ export default function Pizza({ pizza }) {
   function handleAddtoCart(pizza,quantity,varient, price){
     if(isLogged){
       disptach(addToCart({id: pizza.id, pizza: pizza, quantity: quantity, varient: varient, price: price}))
+      toast.success('Item added successfully.')
     }else{
       navigate('/login')
     }

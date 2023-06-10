@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import pizzas from '../pizzasData'
 import Pizza from '../components/Pizza'
 
@@ -8,7 +9,7 @@ function Home() {
   return (
     <div>
       <Header/>
-      {/* <h1>Home page</h1> */}
+      <ToastContainer position='top-center' autoClose={2000} />
        <div className="row p-5">
         {
           pizzas.map((pizza) => (
