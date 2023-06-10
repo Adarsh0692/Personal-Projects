@@ -103,7 +103,7 @@ function handleSubmit(e){
       icon: 'success',
       title: `Dear ${fName} ${lName} you have successfuly registered!`,
       showConfirmButton: false,
-      timer: 3000
+      timer: 2000
     })
     if(done){
     localStorage.setItem('userData', JSON.stringify(newData))
