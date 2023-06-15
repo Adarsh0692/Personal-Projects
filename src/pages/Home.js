@@ -10,10 +10,10 @@ function Home() {
     <div>
       <Header/>
       <ToastContainer position='top-center' autoClose={2000} />
-       <div className="row p-5">
+       <div className="row ">
         {
           pizzas.map((pizza) => (
-            <div className="col-md-4">
+            <div className="col-md-4 py-4 px-2">
                <Pizza pizza={pizza}/>
             </div>
           ))

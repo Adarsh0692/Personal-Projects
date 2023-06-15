@@ -35,10 +35,10 @@ export default function Pizza({ pizza }) {
     }
   }
   return (
-    <div className="shadow-lg p-3 mb-5 bg-body rounded text-center m-5">
+    <div className="shadow-lg p-4 mb-5 bg-body rounded text-center m-4">
       <div onClick={handleShow}>
         <h1>{pizza.name}</h1>
-        <img src={pizza.image} alt={pizza.name} />
+        <img src={pizza.image} alt={pizza.name} className="img-fluid" />
       </div>
       <div className="d-flex flex-row">
         <div className="w-100 m-1">
@@ -81,7 +81,7 @@ export default function Pizza({ pizza }) {
               )
             }
             type="button"
-            class="btn btn-danger"
+            class="btn btn-danger "
           >
             ADD TO CART
           </button>

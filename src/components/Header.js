@@ -21,7 +21,8 @@ export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.users.user);
-  const cartItemData = cart.active.cart;
+  const cartItemData = cart.active?.cart;
+  const myOrders = cart.active?.order
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -53,6 +54,7 @@ export default function Header() {
   function handleLogout() {
     isLogin.active.isActive = false;
     isLogin.active.cart = cartItemData;
+    isLogin.active.order = myOrders
     localStorage.setItem("userData", JSON.stringify(user));
     dispatch(logout());
     navigate("/login");
