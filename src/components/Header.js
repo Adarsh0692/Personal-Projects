@@ -7,7 +7,6 @@ import Button from "@mui/material/Button";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
-import FastfoodIcon from "@mui/icons-material/Fastfood";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/slice";
 import Modal from "react-bootstrap/Modal";
@@ -18,13 +17,12 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 
-
 export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.users.user);
   const cartItemData = cart.active.cart;
-  
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -70,26 +68,22 @@ export default function Header() {
 
   function handleCart() {
     if (isLogin) {
-      if(cartItemData.length>0){
+      if (cartItemData.length > 0) {
         navigate("/cart");
-      }else{
-        navigate('/noCartItem')
+      } else {
+        navigate("/noCartItem");
       }
-      
     } else {
       navigate("/login");
     }
   }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "black" }}>
         <Toolbar>
-          
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <FastfoodIcon
-              onClick={() => navigate("/")}
-              sx={{ color: "goldenrod", fontSize: "2rem", cursor: "pointer" }}
-            />
+            <h2 className="text-secondary fw-bolder fst">PIZZA BITE</h2>
           </Typography>
           <div className="mx-3">
             <Badge badgeContent="New" color="error">
@@ -114,7 +108,9 @@ export default function Header() {
                 {cart.fName}
               </Button>
               <Menu anchorEl={anchorEl} open={open} onClose={handlesClose}>
-                <MenuItem onClick={handlesClose}>My account</MenuItem>
+                <MenuItem onClick={() => navigate("/myOrder")}>
+                  My Orders
+                </MenuItem>
                 <MenuItem onClick={handleClickOpen}>Logout</MenuItem>
               </Menu>
             </div>
@@ -145,7 +141,7 @@ export default function Header() {
             </Modal.Header>
             <Modal.Body>
               <p>Apply this code to get 30% discount.</p>
-              <p>Code- PizzaBite30</p>
+              <p>Code- Enter your first name.</p>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={handleClose} variant="contained">

@@ -4,25 +4,26 @@ import { Link } from "react-router-dom";
 import { cartItem, deleteItem } from "../store/slice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Checkout from "../components/Checkout";
 
 export default function AddCart() {
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.users.user);
   const cartData = carts.active.cart;
-  // console.log(cartData);
   let subtotal = cartData.reduce((x, item) => x + item.price, 0);
-
-  // let discount = (subtotal * 30) / 100
 
   const [code, setCode] = useState("");
   const [isDiscount, setIsDiscout] = useState(false);
   const discount = isDiscount ? (subtotal * 30) / 100 : 0.0;
+  let NewSubtotal = subtotal - discount
   function handleCode(e) {
     setCode(e.target.value);
   }
+  const codeName = carts.fName
+  console.log(codeName);
   function handleDiscount(code) {
     if (code) {
-      if (code === "PizzaBite30") {
+      if (code === codeName) {
         setCode("");
         setIsDiscout(true);
         toast.success("Congratulation! You got 30% discount.");
@@ -201,13 +202,7 @@ export default function AddCart() {
                           <h5> {subtotal - discount} Rs/-</h5>
                         </div>
 
-                        <button
-                          type="button"
-                          className="btn btn-dark btn-block btn-lg"
-                          data-mdb-ripple-color="dark"
-                        >
-                          Pay Now {subtotal - discount}
-                        </button>
+                        <Checkout Subtotal ={NewSubtotal} cart={cartData} />
                       </div>
                     </div>
                   </div>
@@ -216,6 +211,7 @@ export default function AddCart() {
             </div>
           </div>
         </div>
+
       </section>
     </>
   );

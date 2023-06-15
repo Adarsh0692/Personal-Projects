@@ -75,6 +75,7 @@ const data ={
   active: {
     isActive: false,
     cart: [],
+    order: []
     
   }
 }

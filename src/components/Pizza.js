@@ -1,38 +1,44 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { addToCart } from "../store/slice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
 
 export default function Pizza({ pizza }) {
   const [quantity, setQuantity] = useState(1);
   const [varient, setVarient] = useState("small");
   const [show, setShow] = useState(false);
-  const handleClose =() => setShow(false)
-  const handleShow =() => setShow(true)
-  const disptach = useDispatch()
-  const navigate = useNavigate()
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const disptach = useDispatch();
+  const navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem('userData')) || []
-  const isLogged = user.find((user) => user.active.isActive === true)
+  const user = JSON.parse(localStorage.getItem("userData")) || [];
+  const isLogged = user.find((user) => user.active.isActive === true);
 
-  function handleAddtoCart(pizza,quantity,varient, price){
-    if(isLogged){
-      disptach(addToCart({id: pizza.id, pizza: pizza, quantity: quantity, varient: varient, price: price}))
-      toast.success('Item added successfully.')
-    }else{
-      navigate('/login')
+  function handleAddtoCart(pizza, quantity, varient, price) {
+    if (isLogged) {
+      disptach(
+        addToCart({
+          id: pizza.id,
+          pizza: pizza,
+          quantity: quantity,
+          varient: varient,
+          price: price,
+        })
+      );
+      toast.success("Item added successfully.");
+    } else {
+      navigate("/login");
     }
-         
   }
   return (
     <div className="shadow-lg p-3 mb-5 bg-body rounded text-center m-5">
       <div onClick={handleShow}>
         <h1>{pizza.name}</h1>
-        <img src={pizza.image} alt={pizza.name}  />
+        <img src={pizza.image} alt={pizza.name} />
       </div>
       <div className="d-flex flex-row">
         <div className="w-100 m-1">
@@ -65,7 +71,18 @@ export default function Pizza({ pizza }) {
           <h1>Price: {pizza.prices[0][varient] * quantity} Rs/-</h1>
         </div>
         <div className="w-100 my-2">
-          <button onClick={() =>handleAddtoCart(pizza, quantity, varient, (pizza.prices[0][varient] * quantity))} type="button" class="btn btn-danger">
+          <button
+            onClick={() =>
+              handleAddtoCart(
+                pizza,
+                quantity,
+                varient,
+                pizza.prices[0][varient] * quantity
+              )
+            }
+            type="button"
+            class="btn btn-danger"
+          >
             ADD TO CART
           </button>
         </div>
@@ -76,11 +93,13 @@ export default function Pizza({ pizza }) {
           <Modal.Title>{pizza.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <img src={pizza.image} alt={pizza.name} style={{height: '300px'}} />
+          <img src={pizza.image} alt={pizza.name} style={{ height: "300px" }} />
           <p>{pizza.description}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleClose} variant="primary">Close</Button>
+          <Button onClick={handleClose} variant="primary">
+            Close
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>
