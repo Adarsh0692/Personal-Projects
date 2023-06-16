@@ -20,7 +20,7 @@ In payment section payment mode is a test mode so you can give fake credit card 
 * Adarsh kushwaha
 
 ## Deployment Link
-
+https://pizza-bite-8672.onrender.com
 
 ## Data Structure 
 ```json
