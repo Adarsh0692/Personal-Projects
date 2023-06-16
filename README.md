@@ -27,10 +27,10 @@ In payment section payment mode is a test mode so you can give fake credit card 
 
 "users": {
  "user": {
-  "firstName": '',
-  "lastName": '',
-  "email": '',
-  "password": '',
+  "firstName": " ",
+  "lastName": " ",
+  "email": " ",
+  "password": " ",
   "active": {
     "isActive": false,
     "cart": [],
