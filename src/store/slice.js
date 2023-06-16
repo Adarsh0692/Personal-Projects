@@ -1,9 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const getAllData = createAsyncThunk('pizzaData', async () => {
+  const response = await fetch('https://mocki.io/v1/b8625a46-e7d9-43ac-bcd3-571bd43b5252')
+  const result = response.json()
+  return result;
+})
 
 const dataSlice = createSlice({
   name: "user",
   initialState: {
     user: [],
+    data: [],
+    loading: false,
+    error: null,
+  },
+
+  extraReducers:{
+    [getAllData.pending]: (state) =>{
+      state.loading = true
+    },
+
+    [getAllData.fulfilled]: (state, action) => {
+      state.loading = false
+      state.data = action.payload
+    },
+
+    [getAllData.rejected]: (state, action) => {
+      state.loading = false
+      state.error = action.payload
+    }
   },
 
   reducers: {
@@ -47,4 +72,6 @@ const dataSlice = createSlice({
 
 export const { login, logout, addToCart, cartItem, deleteItem, orderedItem } =
   dataSlice.actions;
+  
 export default dataSlice.reducer;
+
