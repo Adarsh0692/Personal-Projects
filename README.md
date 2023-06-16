@@ -25,19 +25,19 @@ In payment section payment mode is a test mode so you can give fake credit card 
 ## Data Structure 
 ```json
 
-'users': {
- 'user': {
-  'firstName': '',
-  'lastName': '',
-  'email': ''m
-  'password': '',
-  'active': {
-    'isActive': false,
-    'cart': [],
-    'order': []
+"users": {
+ "user": {
+  "firstName": '',
+  "lastName": '',
+  "email": '',
+  "password": '',
+  "active": {
+    "isActive": false,
+    "cart": [],
+    "order": []
   }
 },
-'pizzaData': [],
-'loading': false,
-'error': null
+"pizzaData": [],
+"loading": false,
+"error": null
 }
