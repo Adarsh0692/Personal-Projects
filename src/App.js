@@ -7,6 +7,7 @@ import  '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import NoCartItem from "./pages/NoCartItem";
 import Success from "./pages/Success";
 import MyOrder from "./pages/MyOrder";
+
 function App() {
   return (
    <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
     <Route path="/noCartItem" element={<NoCartItem/>}/>
     <Route path="/myOrder" element={<MyOrder/>}/>
     <Route path="/success" element={<Success/>}/>
+   
    </Routes>
    </BrowserRouter>
   );

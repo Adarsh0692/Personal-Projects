@@ -61,7 +61,7 @@ export default function Header() {
   }
 
   function handleLogin() {
-    if (user) {
+    if (user.length>0) {
       navigate("/login");
     } else {
       navigate("/signup");

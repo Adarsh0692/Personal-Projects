@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Pizza from '../components/Pizza'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllData } from '../store/slice';
+import Loading from '../components/Loading'
 
 function Home() {
   const dispatch = useDispatch()
@@ -14,7 +15,7 @@ function Home() {
     dispatch(getAllData())
   } ,[])
 
-  if(loading) return <p>loading...</p>
+  if(loading) return <div><Loading/></div>
   if(error) return <p>something went wrong...</p>
 
   return (
