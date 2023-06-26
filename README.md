@@ -18,4 +18,5 @@ Created a movies watch website using ReactJs and Redux. Where user can seen all 
 ## Author
 * Adarsh kushwaha
 ## Deployment Link
+https://watch-movix.vercel.app
 
