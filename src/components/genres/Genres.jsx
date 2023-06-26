@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux'
 
 function Genres({data}) {
     const {genres} = useSelector((state) => state.home)
+   
   return (
     <div className='genres'>
-        {data?.map((g) => {
+        {data?.map((g, index) => {
             return (
-                <div key={g.id} className="genre">
+                <div key={index} className="genre">
                     {genres[g]?.name}
                 </div>
             )

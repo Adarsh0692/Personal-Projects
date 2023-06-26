@@ -2,7 +2,7 @@ import React from "react";
 
 import Carousel from "../../../components/carousel/Carousel";
 import useFetch from "../../../hooks/useFetch";
-import Popular from '../../home/popular/Popular'
+
 
 const Recommendation = ({ mediaType, id }) => {
     const { data, loading, error } = useFetch(
@@ -16,7 +16,7 @@ const Recommendation = ({ mediaType, id }) => {
             loading={loading}
             endPoint={mediaType}
         />
-        // <Popular/>
+        
     );
 };
 
