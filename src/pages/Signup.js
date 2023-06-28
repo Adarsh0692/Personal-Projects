@@ -86,6 +86,8 @@ function handleSubmit(e){
   
   const existUser = userDetails.find((user) => user.email === email)
 
+  if(!PS && !FN && !LN && !EM){
+
   if(existUser){
     Swal.fire({
        icon: 'error',
@@ -115,6 +117,19 @@ function handleSubmit(e){
     setPassword('')
   }
 }
+  }else{
+    Swal.fire({
+      icon: 'error',
+      title: 'Somthing went wrong!',
+      text: 'Please filled valid inputs!',
+     showClass: {
+       popup: 'animate__animated animate__fadeInDown'
+     },
+     hideClass: {
+       popup: 'animate__animated animate__fadeOutUp'
+     }
+   })
+  }
 }
   return (
     <div className='mainSignup_div'>
